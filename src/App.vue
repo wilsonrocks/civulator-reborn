@@ -1,19 +1,49 @@
+
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <selector
+    :options=unitNames>
+    </selector>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import {units} from './constants';
+import Selector from './components/Selector.vue';
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Selector,
+  },
+  data: () => ({
+    attacker: {
+      unit: 'warriors',
+      level: 'green',
+    },
+    defender: {
+      unit: 'phalanx',
+      level: 'veteran',
+      fortified: true,
+    },
+    location: {
+      terrain: 'grassland',
+      city: true,
+      walls: true,
+      coastalDefence: false,
+      samBattery: false,
+      fortress: false,
+    },
+  }),
+  computed: {
+    units() {
+      return units;
+    },
+    unitNames() {
+      return units.map(unit => unit.name);
+    }
   }
-}
+};
 </script>
 
 <style>
