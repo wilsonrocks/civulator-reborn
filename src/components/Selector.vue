@@ -1,13 +1,21 @@
 <template>
-  <select>
-    <option
-      v-for="option in options"
-      v-bind:key=option
+  <div>
+    <label
+      :for=selectorId
     >
-      {{option}}
-    </option>
-  </select>
-
+      {{label}}: 
+    </label>
+    <select
+      :id=selectorId
+    >
+      <option
+        v-for="option in options"
+        v-bind:key=option
+      >
+        {{option}}
+      </option>
+    </select>
+  </div>
 </template>
 
 <script>
@@ -18,6 +26,12 @@
         type: Array,
         required: true,
       },
+      label: String,
+    },
+    computed: {
+      selectorId: function () {
+        return `selector-${this.label}`.toLowerCase()
+      }
     }
   };
 </script>

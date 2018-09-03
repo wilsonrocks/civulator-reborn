@@ -1,10 +1,13 @@
 const units = [
     {
-      name: "warriors"
+      name: "warriors",
     },
     {
-      name: "phalanx"
-    }
+      name: "phalanx",
+    },
+    {
+      name: "cruise missile",
+    },
   ];
 
 export {

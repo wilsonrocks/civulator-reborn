@@ -1,9 +1,15 @@
-
 <template>
   <div id="app">
+    <h1>The Civulator Returns</h1>
     <selector
-    :options=unitNames>
-    </selector>
+      :options=unitNames
+      label="Attacker"
+    />
+
+    <selector
+      :options=unitNames
+      label="Defender"
+    />
   </div>
 </template>
 
