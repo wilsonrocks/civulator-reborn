@@ -1,21 +1,33 @@
 <template>
   <div id="app">
     <h1>The Civulator Returns</h1>
+    <fieldset>
     <selector
       :options=unitNames
       label="Attacker"
     />
-
     <selector
-      :options=unitNames
-      label="Defender"
+      :options=levelNames
+      label="Level"
     />
+    </fieldset>
+
+    <fieldset>
+      <selector
+        :options=unitNames
+        label="Defender"
+      />
+      <selector
+        :options=levelNames
+        label="Level"
+      />
+    </fieldset>
+
   </div>
 </template>
 
 <script>
-
-import {units} from './constants';
+import {units, levels} from './constants';
 import Selector from './components/Selector.vue';
 export default {
   name: 'app',
@@ -42,12 +54,10 @@ export default {
     },
   }),
   computed: {
-    units() {
-      return units;
-    },
-    unitNames() {
-      return units.map(unit => unit.name);
-    }
+    units: () => units,
+    unitNames: () => units.map(unit => unit.name),
+    levels: () => levels,
+    levelNames: () => levels.map(level => level.name),
   }
 };
 </script>
