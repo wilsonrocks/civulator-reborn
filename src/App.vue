@@ -1,38 +1,21 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
+    {{attacker}}
     <h1>The Civulator Returns</h1>
-    <fieldset>
-    <selector
-      :options=unitNames
-      label="Attacker"
-    />
-    <selector
-      :options=levelNames
-      label="Level"
-    />
-    </fieldset>
-
-    <fieldset>
-      <selector
-        :options=unitNames
-        label="Defender"
-      />
-      <selector
-        :options=levelNames
-        label="Level"
-      />
-    </fieldset>
-
+    <unit
+      v-on:change="updateAttacker"
+      role="attacker"
+    >
+    </unit>
   </div>
 </template>
 
 <script>
-import {units, levels} from './constants';
-import Selector from './components/Selector.vue';
+import Unit from './components/Unit.vue';
 export default {
   name: 'app',
   components: {
-    Selector,
+    Unit,
   },
   data: () => ({
     attacker: {
@@ -53,12 +36,11 @@ export default {
       fortress: false,
     },
   }),
-  computed: {
-    units: () => units,
-    unitNames: () => units.map(unit => unit.name),
-    levels: () => levels,
-    levelNames: () => levels.map(level => level.name),
-  }
+  methods: {
+    updateAttacker (payload) {
+      this.$data.attacker = payload;
+    }
+  },
 };
 </script>
 

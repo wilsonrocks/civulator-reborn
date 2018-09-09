@@ -7,6 +7,7 @@
     </label>
     <select
       :id=selectorId
+      v-on:change="e => $emit('change', e.target.value)"
     >
       <option
         v-for="option in options"
